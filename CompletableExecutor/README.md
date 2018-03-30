@@ -7,3 +7,8 @@ Refer to https://geowarin.github.io/completable-futures-with-spring-async/ for m
 ```
 Caused by: java.lang.ClassCastException: java.util.concurrent.FutureTask cannot be cast to java.util.concurrent.CompletableFuture
 ```
+
+Required Libraries
+* Lombok 1.16.20
+* Guava 18.0
+* Spring Boot 1.2.4
