@@ -1,5 +1,6 @@
 package completablefuture;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class CompletableFuturesTest {
 
     @Test
+    @DisplayName("Gist 4 - testCompletableFutures")
     public void testCompletableFutures() throws Exception {
 
         AtomicBoolean executed = new AtomicBoolean(false);

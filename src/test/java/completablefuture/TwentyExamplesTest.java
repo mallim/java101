@@ -111,6 +111,7 @@ public class TwentyExamplesTest {
      * @throws InterruptedException
      */
     @Test
+    @DisplayName("GIST 1 - testCancellation")
     public void testCancellation() throws ExecutionException, InterruptedException {
         AtomicBoolean cancelled = new AtomicBoolean();
         AtomicBoolean handled = new AtomicBoolean();
@@ -150,6 +151,7 @@ public class TwentyExamplesTest {
      *
      */
     @Test
+    @DisplayName("GIST 2 - testExceptions")
     public void testExceptions() {
 
         CompletableFuture<Object> future = new CompletableFuture<>();
@@ -181,6 +183,7 @@ public class TwentyExamplesTest {
      *
      */
     @Test
+    @DisplayName("GIST 3 - testCompleteExceptionally")
     public void testCompleteExceptionally() throws ExecutionException, InterruptedException {
         AtomicBoolean cancelled = new AtomicBoolean();
         AtomicBoolean handled = new AtomicBoolean();

@@ -1,8 +1,8 @@
 
 ### Got examples from 
 
-* A gist [CompletableFutureTest.java](https://gist.github.com/spullara/5897605)
-* [Twenty Examples](https://mahmoudanouti.wordpress.com/2018/01/26/20-examples-of-using-javas-completablefuture/)
+* A gist [CompletableFutureTest.java](https://gist.github.com/spullara/5897605) 
+* [Twenty Examples](https://mahmoudanouti.wordpress.com/2018/01/26/20-examples-of-using-javas-completablefuture/) in https://github.com/manouti/completablefuture-examples
 
 ### Required Libraries
 
