@@ -6,7 +6,7 @@ With sample source at https://github.com/javapapo/projects-from-blog/tree/master
 
 maven keep on hanging when trying to download jackson-annotations version 2.9.0, used the idea at https://springframework.guru/jackson-dependency-issue-spring-boot-maven/ to resolve the issue.
 
-Required Libraries
+###  Required Libraries
 * Lombok 1.16.20
 * Spring Boot 2.0.0
 * Jackson 2.9.5
