@@ -3,4 +3,4 @@
 *.iml
 libs/*.jar
 out/
-!/completablefuture/src/main
+/target/
