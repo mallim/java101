@@ -4,11 +4,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 import static java.lang.Thread.sleep;
@@ -19,6 +21,8 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TwentyExamplesTest {
 
     static Random random = new Random();
+
+    ArrayList<String> numbers = new ArrayList<String>(Arrays.asList("0", "1", "2"));
 
     static ExecutorService executor = Executors.newFixedThreadPool(3, new ThreadFactory() {
         int count = 1;
@@ -342,6 +346,54 @@ public class TwentyExamplesTest {
                 });
         allOf.join();
         assertTrue( result.length() > 0, "Result was empty" );
+    }
+
+    /**
+     * http://javasampleapproach.com/java/java-8/java-8-multiple-completablefutures
+     *
+     * @throws InterruptedException
+     * @throws ExecutionException
+     */
+    @Test
+    @DisplayName("JAVASAMPLE 1 - thenCompose() can chain 2 CompletableFutures by using the result which is returned from the invoking future")
+    void testCompose() throws InterruptedException, ExecutionException {
+        CompletableFuture<String> future = createCF(2); // inside future
+        CompletableFuture<String> combinedFuture = future.thenCompose(TwentyExamplesTest::calculateCF);
+
+        combinedFuture.thenAccept(result -> log.debug("accept: " + result));
+        // check results
+        assertEquals( "2", future.get(), "Future result>> " );
+        log.debug( "combinedFuture result>> {}", combinedFuture.get() );
+    }
+
+    @Test
+
+
+    private static CompletableFuture<String> calculateCF(String s) {
+
+        return CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                log.debug("> inside new Future");
+                return "new Completable Future: " + s;
+            }
+        });
+    }
+
+    private CompletableFuture<String> createCF(int index) {
+        return CompletableFuture.supplyAsync(new Supplier<String>() {
+            @Override
+            public String get() {
+                try {
+                    System.out.println("inside future: waiting for detecting index: " + index + "...");
+                    System.out.println("inside future: done...");
+
+                    return numbers.get(index);
+                } catch (Throwable e) {
+                    return "not detected";
+                }
+            }
+        });
     }
 
     private String delayedUpperCase(String s) {
