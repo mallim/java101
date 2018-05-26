@@ -6,6 +6,7 @@ My example snippets for reactor
 
 * Article at http://www.baeldung.com/reactor-core. Source at https://github.com/eugenp/tutorials/tree/master/reactor-core 
 * Article [Reactor by Example](https://www.infoq.com/articles/reactor-by-example)
+* Article [Reactor Core Tutorial](http://sinhamohit.com/writing/reactor-core-tutorial). Source at https://github.com/mohitsinha/tutorials/tree/master/reactor-example
 
 ## Required Libraries
 
