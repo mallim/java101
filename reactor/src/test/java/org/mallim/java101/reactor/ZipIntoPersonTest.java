@@ -13,8 +13,11 @@ import java.util.List;
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 /**
- * Based on https://musigma.blog/2016/11/21/reactor.html
- * http://javasampleapproach.com/reactive-programming/reactor/reactor-create-flux-and-mono-simple-ways-to-create-publishers-reactive-programming
+ * Based on
+ * 1. https://musigma.blog/2016/11/21/reactor.html
+ * 2. http://javasampleapproach.com/reactive-programming/reactor/reactor-create-flux-and-mono-simple-ways-to-create-publishers-reactive-programming
+ * 3. https://huongdanjava.com/introduce-about-project-reactor.html
+ *
  */
 @Slf4j
 public class ZipIntoPersonTest {
@@ -66,4 +69,11 @@ public class ZipIntoPersonTest {
         Flux.error(new CustomException("Mono"))
                 .doOnError(e -> log.error("inside Mono doOnError()"));
     }
+
+    @Test
+    public void testHookOnNext() {
+        Flux flux = Flux.just("Khanh", "Quan", "Thanh");
+        flux.subscribe(new Consumer());
+    }
+
 }
