@@ -1,6 +1,7 @@
 package org.mallim.java101.reactor;
 
 import lombok.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -13,7 +14,9 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 /**
  * Based on https://musigma.blog/2016/11/21/reactor.html
+ * http://javasampleapproach.com/reactive-programming/reactor/reactor-create-flux-and-mono-simple-ways-to-create-publishers-reactive-programming
  */
+@Slf4j
 public class ZipIntoPersonTest {
 
     @Value
@@ -52,4 +55,15 @@ public class ZipIntoPersonTest {
                 .verify();
     }
 
+    @Test
+    public void monoThrowException() {
+        Mono.error(new CustomException("Mono"))
+                .doOnError(e -> log.error("inside Mono doOnError()"));
+    }
+
+    @Test
+    public void fluxThrowException() {
+        Flux.error(new CustomException("Mono"))
+                .doOnError(e -> log.error("inside Mono doOnError()"));
+    }
 }
